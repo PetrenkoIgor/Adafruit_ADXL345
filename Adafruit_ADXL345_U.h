@@ -57,11 +57,11 @@
 #define ADXL345_REG_THRESH_ACT (0x24)   ///< Activity threshold
 #define ADXL345_REG_THRESH_INACT (0x25) ///< Inactivity threshold
 #define ADXL345_REG_TIME_INACT (0x26)   ///< Inactivity time
-#define ADXL345_REG_ACT_INACT_CTL                                              \
-  (0x27) ///< Axis enable control for activity and inactivity detection
-#define ADXL345_REG_THRESH_FF (0x28) ///< Free-fall threshold
-#define ADXL345_REG_TIME_FF (0x29)   ///< Free-fall time
-#define ADXL345_REG_TAP_AXES (0x2A)  ///< Axis control for single/double tap
+#define ADXL345_REG_ACT_INACT_CTL \
+  (0x27)                                  ///< Axis enable control for activity and inactivity detection
+#define ADXL345_REG_THRESH_FF (0x28)      ///< Free-fall threshold
+#define ADXL345_REG_TIME_FF (0x29)        ///< Free-fall time
+#define ADXL345_REG_TAP_AXES (0x2A)       ///< Axis control for single/double tap
 #define ADXL345_REG_ACT_TAP_STATUS (0x2B) ///< Source for single/double tap
 #define ADXL345_REG_BW_RATE (0x2C)        ///< Data rate and power mode control
 #define ADXL345_REG_POWER_CTL (0x2D)      ///< Power-saving features control
@@ -89,7 +89,8 @@
  * @brief Used with register 0x2C (ADXL345_REG_BW_RATE) to set bandwidth
 
 */
-typedef enum {
+typedef enum
+{
   ADXL345_DATARATE_3200_HZ = 0b1111, ///< 1600Hz Bandwidth   140�A IDD
   ADXL345_DATARATE_1600_HZ = 0b1110, ///<  800Hz Bandwidth    90�A IDD
   ADXL345_DATARATE_800_HZ = 0b1101,  ///<  400Hz Bandwidth   140�A IDD
@@ -113,7 +114,8 @@ typedef enum {
  * @brief  Used with register 0x31 (ADXL345_REG_DATA_FORMAT) to set g range
  *
  */
-typedef enum {
+typedef enum
+{
   ADXL345_RANGE_16_G = 0b11, ///< +/- 16g
   ADXL345_RANGE_8_G = 0b10,  ///< +/- 8g
   ADXL345_RANGE_4_G = 0b01,  ///< +/- 4g
@@ -124,7 +126,8 @@ typedef enum {
  * @brief Class to interact with the ADXL345 accelerometer
  *
  */
-class Adafruit_ADXL345_Unified : public Adafruit_Sensor {
+class Adafruit_ADXL345_Unified : public Adafruit_Sensor
+{
 public:
   Adafruit_ADXL345_Unified(int32_t sensorID = -1);
   Adafruit_ADXL345_Unified(uint8_t clock, uint8_t miso, uint8_t mosi,
@@ -137,7 +140,7 @@ public:
   void setDataRate(dataRate_t dataRate);
   dataRate_t getDataRate(void);
   bool getEvent(sensors_event_t *);
-  void getSensor(sensor_t *);
+  void getSensor(sensor_adxl345_t *);
 
   uint8_t getDeviceID(void);
   void writeRegister(uint8_t reg, uint8_t value);
